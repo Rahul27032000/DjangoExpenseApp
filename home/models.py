@@ -10,7 +10,8 @@ TYPE =(
 class Profile(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     income = models.FloatField()
-    balance = models.FloatField(null=True)
+    expenses = models.FloatField(default=0)
+    balance = models.FloatField(null=True,blank=True)
 
 
 
