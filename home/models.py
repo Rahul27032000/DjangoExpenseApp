@@ -21,6 +21,14 @@ class Profile(models.Model):
     
 
 
+    def save(self, *args, **kwargs):
+        # Set the default balance to be the same as income when creating a new profile
+        if not self.pk:  # Check if this is a new profile (not already saved)
+            self.balance = self.income
+        super().save(*args, **kwargs)
+
+
+
 
 class Expense(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
