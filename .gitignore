@@ -36,3 +36,4 @@ __pycache__/
 
 # Ignore database migrations
 **/migrations/
+.fuse_hidden*
