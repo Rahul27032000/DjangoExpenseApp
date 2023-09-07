@@ -11,7 +11,11 @@ class Profile(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     income = models.FloatField()
     expenses = models.FloatField(default=0)
-    balance = models.FloatField(null=True,blank=True)
+    balance = models.FloatField(null=True,blank=True,default=None)
+
+    def save(self, *args, **kwargs):
+        self.balance = self.income - self.expenses
+        super().save(*args, **kwargs)
 
 
 
