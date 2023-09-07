@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 TYPE =(
     ('Positive','Positive'),
-    ('Positive','Positive')
+    ('Negative', 'Negative')
     )
 # Create your models here.
 
@@ -13,9 +13,12 @@ class Profile(models.Model):
     expenses = models.FloatField(default=0)
     balance = models.FloatField(null=True,blank=True,default=None)
 
-    def save(self, *args, **kwargs):
-        self.balance = self.income - self.expenses
-        super().save(*args, **kwargs)
+
+
+
+    def __str__(self):
+        return self.user.username
+    
 
 
 
